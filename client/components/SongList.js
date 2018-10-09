@@ -9,10 +9,7 @@ class SongList extends Component {
     }
     return this.props.data.songs.map(song => {
       return (
-        <li
-          key={song.id}
-          className="list-group-item d-flex justify-content-between align-items-center"
-        >
+        <li key={song.id} className="list-group-item">
           {song.title}
           {/* <span className="badge badge-primary badge-pill">{song.lyrics.length}</span> */}
         </li>
@@ -21,11 +18,14 @@ class SongList extends Component {
   }
 
   render() {
-    console.log(this.props.data);
     return (
-      <div className="container text-center">
-        <h1 className="display-1">Lyrical</h1>
-        <ul className="list-group">{this.renderSongs()}</ul>
+      <div>
+        <ul className="list-group">
+          <li className="list-group-item d-flex justify-content-between align-items-center">
+            <button className="btn btn-sm btn-primary">Add Song</button>
+          </li>
+          {this.renderSongs()}
+        </ul>
       </div>
     );
   }
@@ -37,9 +37,6 @@ const query = gql`
     songs {
       id
       title
-      lyrics {
-        id
-      }
     }
   }
 `;
